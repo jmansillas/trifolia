@@ -1,0 +1,41 @@
+{
+	"resourceType": "ValueSet",
+	"id": "observationcovidathome-values",
+	"meta": {
+		"versionId": "2",
+		"lastUpdated": "2021-03-11T00:45:45.558+00:00",
+		"source": "#LgMU79AAbx4JwkIf"
+	},
+	"url": "http://hl7.org/fhir/ValueSet/observationcovidathome-values",
+	"version": "1",
+	"name": "covidathomevalues",
+	"title": "Covid At Home Result Values",
+	"status": "draft",
+	"description": "This set of values contains SNOMED-CT concepts representing typical Covid at home lab test results",
+	"compose": {
+		"include": [
+			{
+				"system": "http://snomed.info/sct",
+				"version": " 2020-09",
+				"concept": [
+					{
+						"code": "260373001",
+						"display": "Detected"
+					},
+					{
+						"code": "260415000",
+						"display": "Not Detected"
+					},
+					{
+						"code": "455371000124106",
+						"display": "Invalid"
+					},
+					{
+						"code": "125154007",
+						"display": "Specimen unsatisfactory for evaluation"
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,71 @@
+{
+	"resourceType": "DiagnosticReport",
+	"id": "at-home-covid-diagnosticReport-122",
+	"meta": {
+		"versionId": "3",
+		"lastUpdated": "2021-03-25T19:54:19.703+00:00",
+		"source": "#SQUty46woQcKrBjI",
+		"profile": [
+			"http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab"
+		]
+	},
+	"text": {
+		"status": "generated",
+		"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2><span title=\"Codes: {http://loinc.org 95209-3}\">SARS-CoV+SARS-CoV-2 (COVID-19) Ag\n          [Presence] in Respiratory specimen by Rapid immunoassay</span> (<span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v2-0074 LAB}\">Laboratory</span>) </h2><table class=\"grid\"><tr><td>Subject</td><td><b>Patricia Noelle </b> BirthDate: 1987-02-20 ( Medical Record Number: 1032702\n            (USUAL))</td></tr><tr><td>Date</td><td>2021-03-10</td></tr><tr><td>Reported</td><td>2021-03-10 10:45:33 AM</td></tr><tr><td>Supporting Information asked on patient interaction with App</td><td>Do you have symptom related to Covid-19: Yes</td></tr><tr><td>Supporting Information - asked on patient interaction with App</td><td>When did your symptoms related to Covid-19 start?: 2021-MAR-22 </td></tr></table><p><b>Report Details</b></p><table class=\"grid\"><tr><td><b>Code</b></td><td><b>Value</b></td><td><b>Date</b></td></tr><tr><td><a href=\"Observation-covid.html\"><span title=\"Codes: {http://loinc.org 95209-3}\">SARS-CoV+SARS-CoV-2 (COVID-19) Ag\n                [Presence] in Respiratory specimen by Rapid immunoassay</span></a></td><td>Detected</td><td>2021-03-10 10:45:33 AM</td></tr></table></div>"
+	},
+	"extension": [
+		{
+			"url": "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo",
+			"valueReference": {
+				"reference": "Observation/symp-presAbsent",
+				"display": "Whether the patient has symptoms related to condition of interest: Yes"
+			}
+		},
+		{
+			"url": "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo",
+			"valueReference": {
+				"reference": "Observation/date-symponset",
+				"display": "Date and time of symptom onset: March 22, 2021"
+			}
+		}
+	],
+	"status": "final",
+	"category": [
+		{
+			"coding": [
+				{
+					"system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+					"code": "LAB",
+					"display": "Laboratory"
+				}
+			]
+		}
+	],
+	"code": {
+		"coding": [
+			{
+				"system": "http://loinc.org",
+				"code": "95209-3",
+				"display": "SARS-CoV+SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory specimen by Rapid immunoassay"
+			}
+		]
+	},
+	"subject": {
+		"reference": "Patient/cc-pat-pnoelle",
+		"display": "Patricia Noelle"
+	},
+	"effectiveDateTime": "2021-03-10T11:45:33+11:00",
+	"issued": "2021-03-10T11:45:33+11:00",
+	"performer": [
+		{
+			"reference": "Organization/acme-atHomeTest",
+			"display": "Acme Laboratory, Inc"
+		}
+	],
+	"result": [
+		{
+			"reference": "Observation/at-home-covid-example-123",
+			"display": "SARS-CoV+SARS-CoV-2"
+		}
+	]
+}

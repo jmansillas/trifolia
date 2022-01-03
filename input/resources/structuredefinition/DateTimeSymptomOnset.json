@@ -1,0 +1,105 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "DateTimeSymptomOnset",
+	"meta": {
+		"versionId": "6",
+		"lastUpdated": "2021-03-25T01:53:09.081+00:00",
+		"source": "#z2MfbdmWR4HvJrF5"
+	},
+	"url": "http://homeCovid.com/fhir/structuredefinition/DateTimeSymptomOnset",
+	"version": "1.0.0",
+	"name": "DateTimeSymptomOnset",
+	"title": "Date Time Covid Symptom Onset",
+	"status": "active",
+	"publisher": "Namaste Informatics",
+	"description": "This Profile constrains FHIR Observation to a simple observation asking for date and time of symptom onset.",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Observation",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Observation",
+				"path": "Observation"
+			},
+			{
+				"id": "Observation.code",
+				"path": "Observation.code",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.code.coding",
+				"path": "Observation.code.coding",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.code.coding.system",
+				"path": "Observation.code.coding.system",
+				"min": 1,
+				"max": "1",
+				"fixedUri": "http://loinc.org",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.code.coding.code",
+				"path": "Observation.code.coding.code",
+				"short": "Date and time of symptom onset",
+				"min": 1,
+				"max": "1",
+				"fixedCode": "65222-2",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.code.coding.display",
+				"path": "Observation.code.coding.display",
+				"fixedString": "Date and time of symptom onset"
+			},
+			{
+				"id": "Observation.subject",
+				"path": "Observation.subject",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.effective[x]",
+				"path": "Observation.effective[x]",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "dateTime"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.value[x]",
+				"path": "Observation.value[x]",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "dateTime"
+					}
+				],
+				"mustSupport": true
+			}
+		]
+	}
+}

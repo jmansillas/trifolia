@@ -1,0 +1,129 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "LabObsHomeCovid",
+	"meta": {
+		"versionId": "43",
+		"lastUpdated": "2021-03-24T20:03:20.684+00:00",
+		"source": "#eUDRx2x9dqaZITPV"
+	},
+	"url": "http://homeCovid.com/fhir/structuredefinition/LabObsHomeCovid",
+	"version": "1.0.0",
+	"name": "CovidAtHomeTest",
+	"title": "Covid 19 At-Home Laboratory Test Result",
+	"status": "active",
+	"publisher": "Namaste Informatics",
+	"description": "This profile constrains US Core Laboratory Result Observation to Covid At Home Tests",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Observation",
+	"baseDefinition": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Observation",
+				"path": "Observation"
+			},
+			{
+				"id": "Observation.id",
+				"path": "Observation.id",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.meta",
+				"path": "Observation.meta"
+			},
+			{
+				"id": "Observation.status",
+				"path": "Observation.status",
+				"fixedCode": "final"
+			},
+			{
+				"id": "Observation.meta.id",
+				"path": "Observation.meta.id"
+			},
+			{
+				"id": "Observation.meta.versionId",
+				"path": "Observation.meta.versionId"
+			},
+			{
+				"id": "Observation.code",
+				"path": "Observation.code",
+				"label": "Label",
+				"short": "Covid At Home Tests",
+				"binding": {
+					"strength": "extensible",
+					"description": "This set of values contains Covid 19 LOINC concepts that are appropriate for at-home tests",
+					"valueSet": "http://hl7.org/fhir/ValueSet/observationcovidathome-codes"
+				}
+			},
+			{
+				"id": "Observation.effective[x]",
+				"path": "Observation.effective[x]",
+				"short": "The effectiveTime SHALL be precise to at least the minute and SHALL include a time zone offset",
+				"min": 1,
+				"type": [
+					{
+						"code": "dateTime"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.value[x]",
+				"path": "Observation.value[x]",
+				"label": "At Home Covid Test Result Values",
+				"short": "At Home Covid Test Result Values",
+				"min": 1,
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"mustSupport": true,
+				"binding": {
+					"strength": "required",
+					"description": "This set of values contains SNOMED CT concepts suitable for at home Covid test results",
+					"valueSet": "http://hl7.org/fhir/ValueSet/observationcovidathome-values"
+				}
+			},
+			{
+				"id": "Observation.specimen",
+				"path": "Observation.specimen",
+				"short": "The Specimen SHALL be from at-home sample. ",
+				"definition": "The referenced specifimen should contain a Specimen.identifier and a Specimen.identifier.assigner",
+				"comment": "The referenced specifimen should contain a Specimen.identifier and a Specimen.identifier.assigner",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.specimen.id",
+				"path": "Observation.specimen.id",
+				"short": "The referenced specimen SHALL contain a Specimen.identifier and a Specimen.identifier.assigner ",
+				"min": 1
+			},
+			{
+				"id": "Observation.device",
+				"path": "Observation.device",
+				"label": "At home Covid test device -2",
+				"short": "The referenced device SHALL be an home covid test device.",
+				"definition": "The referenced device is an at home covid test device, The referenced device **SHALL** contain a Device.udiCarrier.deviceIdentifier. Please see GUDID data base: https://accessgudid.nlm.nih.gov/help/search/basic-search to find the device's UDI",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.device.id",
+				"path": "Observation.device.id",
+				"short": " The referenced device SHALL contain a Device.udiCarrier.deviceIdentifier. The initial project will use the Quidel QuickVue UDI see: (https://accessgudid.nlm.nih.gov/devices/30014613339373) To find other at home device UDIs, please see GUDID data base: https://accessgudid.nlm.nih.gov/help/search/basic-search ",
+				"min": 1
+			},
+			{
+				"id": "Observation.component",
+				"path": "Observation.component",
+				"max": "0"
+			}
+		]
+	}
+}

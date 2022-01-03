@@ -1,0 +1,37 @@
+{
+	"resourceType": "Observation",
+	"id": "symp-presAbsent",
+	"meta": {
+		"versionId": "1",
+		"lastUpdated": "2021-03-25T02:11:59.823+00:00",
+		"source": "#tCVr3NMEiPmP94EA"
+	},
+	"text": {
+		"status": "generated",
+		"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b> Generated Narrative with Details</b></p><p><b> id</b> : symp-presAbsent</p><p><b> status</b> : final</p><p><b> code</b> : Whether the patient has symptoms related to condition of interest <span> (Details : {LOINC code '95419-8' = 'Whether the patient has symptoms related to condition of interest' (Covid 19)</span></p><p><b> subject</b> : <a> Patricia Noelle</a></p><p><b> effective</b> : March 24, 2021</p><p><b> value</b> :Yes</p></div>"
+	},
+	"status": "final",
+	"code": {
+		"coding": [
+			{
+				"system": "http://loinc.org",
+				"code": "95419-8",
+				"display": "Whether the patient has symptoms related to condition of interest"
+			}
+		],
+		"text": "Whether the patient has symptoms related to Covid 19"
+	},
+	"subject": {
+		"reference": "Patient/cc-pat-pnoelle"
+	},
+	"effectiveDateTime": "2021-03-24",
+	"valueCodeableConcept": {
+		"coding": [
+			{
+				"system": "http://snomed.info/sct",
+				"code": "373066001",
+				"display": "Yes (Qualifer Value)"
+			}
+		]
+	}
+}

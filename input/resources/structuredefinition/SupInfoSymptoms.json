@@ -1,0 +1,29 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "SupInfoSymptoms",
+	"meta": {
+		"versionId": "2",
+		"lastUpdated": "2021-03-24T23:56:13.733+00:00",
+		"source": "#Vw7de4CSQje0ql4x"
+	},
+	"url": "http://homeCovid.com/fhir/structuredefinition/SupInfoSymptoms",
+	"version": "1.0",
+	"name": "SupInfoSymptoms",
+	"title": "Supporting Information - Symptoms Present or Absent",
+	"status": "active",
+	"publisher": "Namaste Informatics",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Extension",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Extension",
+				"path": "Extension"
+			}
+		]
+	}
+}

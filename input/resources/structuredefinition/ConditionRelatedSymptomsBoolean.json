@@ -1,0 +1,92 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "ConditionRelatedSymptomsBoolean",
+	"meta": {
+		"versionId": "6",
+		"lastUpdated": "2021-03-24T23:35:29.426+00:00",
+		"source": "#vg5s4Xbq9rwnngSE"
+	},
+	"url": "http://homeCovid.com/fhir/structuredefinition/ConditionRelatedSymptomsBoolean",
+	"version": "1.0.0",
+	"name": "ConditionRelatedSymptomsBoolean",
+	"title": "Covid 19 Related Symptoms Present Boolean",
+	"status": "active",
+	"publisher": "Namaste Informatics",
+	"description": "This profile contrains the FHIR Observation Resource to represent a simple boolean Yes/No answer to presence of symptoms.",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Observation",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Observation",
+				"path": "Observation"
+			},
+			{
+				"id": "Observation.code",
+				"path": "Observation.code",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.code.coding",
+				"path": "Observation.code.coding",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.code.coding.system",
+				"path": "Observation.code.coding.system",
+				"min": 1,
+				"max": "1",
+				"fixedUri": "http://loinc.org",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.code.coding.code",
+				"path": "Observation.code.coding.code",
+				"short": "Whether the patient has symptoms related to condition of interest",
+				"min": 1,
+				"max": "1",
+				"fixedCode": "95419-8",
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.code.coding.display",
+				"path": "Observation.code.coding.display",
+				"fixedString": "Whether the patient has symptoms related to condition of interest"
+			},
+			{
+				"id": "Observation.subject",
+				"path": "Observation.subject",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Observation.value[x]",
+				"path": "Observation.value[x]",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true,
+				"binding": {
+					"strength": "required",
+					"valueSet": "http://hl7.org/fhir/ValueSet/YesNoUnkSNOMED"
+				}
+			}
+		]
+	}
+}

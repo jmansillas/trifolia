@@ -1,0 +1,164 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "DiagRepHomeCovid",
+	"meta": {
+		"versionId": "26",
+		"lastUpdated": "2021-03-25T00:18:45.380+00:00",
+		"source": "#R6ViT36XOOL9RJqx"
+	},
+	"url": "http://homeCovid.com/fhir/structuredefinition/DiagRepHomeCovid",
+	"version": "1.0.0",
+	"name": "DiagRepHomeCovid",
+	"title": "Covid At Home FHIR Diagnostic Report for a Covid Laboratory Result",
+	"status": "active",
+	"publisher": "Namaste Informatics",
+	"description": "This profile constrains US Core Diagnostic Report for Laboratory Results to Covid At Home Tests",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "DiagnosticReport",
+	"baseDefinition": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "DiagnosticReport",
+				"path": "DiagnosticReport"
+			},
+			{
+				"id": "DiagnosticReport.id",
+				"path": "DiagnosticReport.id",
+				"mustSupport": true
+			},
+			{
+				"id": "DiagnosticReport.meta",
+				"path": "DiagnosticReport.meta",
+				"short": "The Meta.source SHALL replicate and hold the App ID. It is known that App IDs are typically managed and housed in the App Launch. Care will need to be taken so that these IDs match",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "DiagnosticReport.meta.id",
+				"path": "DiagnosticReport.meta.id",
+				"short": "App ID will likely be combination of ID + versionID",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "DiagnosticReport.meta.versionId",
+				"path": "DiagnosticReport.meta.versionId",
+				"short": "App ID will likely be combination of ID + versionID",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "DiagnosticReport.extension",
+				"path": "DiagnosticReport.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"rules": "open"
+				}
+			},
+			{
+				"id": "DiagnosticReport.extension:supportingInformationSymptomPresence",
+				"path": "DiagnosticReport.extension",
+				"sliceName": "supportingInformationSymptomPresence",
+				"short": "The supportingInformation Extension will house answers the patient supplied to questions asked by the Covid at home App",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Extension",
+						"targetProfile": [
+							"http://homeCovid.com/fhir/structuredefinition/ConditionRelatedSymptomsBoolean"
+						]
+					}
+				],
+				"fixedUri": "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo",
+				"mustSupport": true
+			},
+			{
+				"id": "DiagnosticReport.extension:supportingInformationSymptomOnset",
+				"path": "DiagnosticReport.extension",
+				"sliceName": "supportingInformationSymptomOnset",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Extension",
+						"targetProfile": [
+							"http://homeCovid.com/fhir/structuredefinition/DateTimeSymptomOnset"
+						]
+					}
+				],
+				"fixedUri": "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo",
+				"mustSupport": true
+			},
+			{
+				"id": "DiagnosticReport.identifier",
+				"path": "DiagnosticReport.identifier",
+				"mustSupport": true
+			},
+			{
+				"id": "DiagnosticReport.status",
+				"path": "DiagnosticReport.status",
+				"type": [
+					{
+						"code": "code"
+					}
+				],
+				"fixedCode": "final"
+			},
+			{
+				"id": "DiagnosticReport.code",
+				"path": "DiagnosticReport.code",
+				"mustSupport": true,
+				"binding": {
+					"strength": "required",
+					"description": "This set of value contains LOINC codes appropriate for and currently used for at home covid testa",
+					"valueSet": "http://hl7.org/fhir/ValueSet/observationcovidathome-codes"
+				}
+			},
+			{
+				"id": "DiagnosticReport.effective[x]",
+				"path": "DiagnosticReport.effective[x]",
+				"type": [
+					{
+						"code": "dateTime"
+					}
+				],
+				"constraint": [
+					{
+						"key": "eJXl1xkh",
+						"severity": "warning",
+						"human": "The effectiveTime SHALL be precise to at least the minute and SHALL include a time zone offset. For example YYYY-MM-DDTHH:mm+/-HH:NN"
+					}
+				]
+			},
+			{
+				"id": "DiagnosticReport.result",
+				"path": "DiagnosticReport.result",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://homeCovid.com/fhir/structuredefinition/LabObsHomeCovid"
+						]
+					}
+				],
+				"mustSupport": true,
+				"binding": {
+					"strength": "required"
+				}
+			}
+		]
+	}
+}
